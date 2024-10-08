@@ -7,7 +7,7 @@ const navLink=<div className="lg:flex gap-6 font-sans font-medium">
 
 <NavLink to='/' className={({isActive})=>isActive?'btn btn-ghost text-red-400':'btn btn-ghost'}>home</NavLink>
 <NavLink to='/available-food' className={({isActive})=>isActive?'btn btn-ghost text-red-400':'btn btn-ghost'}>Available Foods</NavLink>
-<NavLink to='/add-food' className={({isActive})=>isActive?'btn btn-ghost text-red-400':'btn btn-ghost'}>Add Food</NavLink>
+<NavLink to='/added-food' className={({isActive})=>isActive?'btn btn-ghost text-red-400':'btn btn-ghost'}>Add Food</NavLink>
 <NavLink to='/manage-food' className={({isActive})=>isActive?'btn btn-ghost text-red-400':'btn btn-ghost'}>Manage Foods</NavLink>
 <NavLink to='/foods-request' className={({isActive})=>isActive?'btn btn-ghost text-red-400':'btn btn-ghost'}>Foods requests</NavLink>
 </div>
@@ -40,7 +40,7 @@ const navLink=<div className="lg:flex gap-6 font-sans font-medium">
           </ul>    
             
           </div>
-          <a className="btn btn-ghost text-xl">FoodSharing</a>
+          <Link to='/' className="btn btn-ghost text-xl">FoodSharing</Link>
         </div>
         <div className="navbar-center hidden lg:flex ">
         <ul className="menu menu-horizontal px-1">
