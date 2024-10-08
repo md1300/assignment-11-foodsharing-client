@@ -2,6 +2,17 @@ import { Link } from "react-router-dom";
 
 
 const Register = () => {
+
+    const handleRegisterButton=e=>{
+        e.preventDefault()
+        const form=e.target;
+        const name=form.name.value;
+        const email=form.email.value;
+        const photoURL=form.photoURL.value;
+        const password=form.password.value;
+        console.log({name,email,password,photoURL})
+    }
+
     return (
         <div className="hero bg-base-200 min-h-screen">
         <div className="hero-content flex-col">
@@ -10,24 +21,35 @@ const Register = () => {
             
           </div>
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-            <form className="card-body">
+            <form onSubmit={handleRegisterButton} className="card-body">
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Name</span>
+                </label>
+                <input type="text" name="name" placeholder="your name" className="input input-bordered" required />
+              </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
-                <input type="email" placeholder="email" className="input input-bordered" required />
+                <input type="email" name="email" placeholder="email" className="input input-bordered" required />
               </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
-                <input type="password" placeholder="password" className="input input-bordered" required />
+                <input type="url" name="photoURL" placeholder="your photoURL" className="input input-bordered" />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Password</span>
+                </label>
+                <input type="password" name="password" placeholder="password" className="input input-bordered" required />
               </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">if you do not have an account <Link to='/login' className="btn btn-link"> Log in</Link></span>
-                </label>
-               
+                </label>              
               </div>
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Register</button>
