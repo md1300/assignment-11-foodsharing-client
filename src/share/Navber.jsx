@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 
 const Navber = () => {
@@ -40,7 +40,7 @@ const navLink=<div className="lg:flex gap-6 font-sans font-medium">
           </ul>    
             
           </div>
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+          <a className="btn btn-ghost text-xl">FoodSharing</a>
         </div>
         <div className="navbar-center hidden lg:flex ">
         <ul className="menu menu-horizontal px-1">
@@ -49,7 +49,7 @@ const navLink=<div className="lg:flex gap-6 font-sans font-medium">
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+          <Link to='/login' className="btn">Sign In</Link>
         </div>
       </div>
       
