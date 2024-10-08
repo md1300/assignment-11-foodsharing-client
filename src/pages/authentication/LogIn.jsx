@@ -1,13 +1,33 @@
 import { Link } from "react-router-dom";
+import useAuth from "../../Hook/useAuth";
+
 
 const LogIn = () => {
-
-    const handleLogInButton=e=>{
+ const {signIn,googleSignIn}=useAuth()
+//  handle google sign in button ---------------
+const signInGoogle=async()=>{
+  try{
+    const result = await googleSignIn()
+  console.log(result)
+  }
+  catch(err){
+    console.log(err.message)
+  }
+}
+//  handle sign in button ----------------
+    const handleLogInButton=async(e)=>{
         e.preventDefault()
         const form=e.target;
         const email=form.email.value;
         const password=form.password.value;
         console.log({email,password})
+        try{
+          const result=await signIn(email,password)
+          console.log(result)
+        }
+        catch(err){
+          console.log(err.message)
+        }
     }
     return (
         <div className="hero bg-base-200 min-h-screen">
@@ -29,6 +49,12 @@ const LogIn = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input type="password" name="password" placeholder="password" className="input input-bordered" required />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span onClick={signInGoogle} className="label-text btn">sign in with google</span>
+                </label>
+               
               </div>
               <div className="form-control">
                 <label className="label">

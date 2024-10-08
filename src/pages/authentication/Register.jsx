@@ -1,9 +1,14 @@
+
 import { Link } from "react-router-dom";
+import useAuth from "../../Hook/useAuth";
+
+
 
 
 const Register = () => {
+     const {createSignUp}=useAuth()
 
-    const handleRegisterButton=e=>{
+    const handleRegisterButton=async(e)=>{
         e.preventDefault()
         const form=e.target;
         const name=form.name.value;
@@ -11,6 +16,14 @@ const Register = () => {
         const photoURL=form.photoURL.value;
         const password=form.password.value;
         console.log({name,email,password,photoURL})
+  try{
+      const result=await createSignUp(email,password)
+      console.log(result)
+  }
+  catch(err){
+    console.log(err.message)
+  }
+    
     }
 
     return (
