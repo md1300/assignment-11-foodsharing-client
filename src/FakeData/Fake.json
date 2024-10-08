@@ -1,0 +1,92 @@
+[
+    {
+        "_id":1,
+        "food_image": "https://example.com/images/pasta.jpg",
+        "food_name": "Pasta Primavera",
+       "donator":[ {
+            "image": "https://example.com/images/donator6.jpg"},
+            {
+            "name": "Laura Garcia"
+        }],
+        "food_quantity": 10,
+        "pickup_location": "123 Maple St, Springfield",
+        "expired_datetime": "2024-10-12T15:00:00Z",
+        "additional_notes": "Vegan-friendly, contains vegetables."
+        
+    },
+    { 
+        "_id":2,
+        "food_image": "https://example.com/images/salad.jpg",
+        "food_name": "Garden Salad",
+        "donator":[ {
+            "image": "https://example.com/images/donator6.jpg"},
+            {
+            "name": "Laura Garcia"
+        }],
+        "food_quantity": 5,
+        "pickup_location": "456 Oak Ave, Springfield",
+        "expired_datetime": "2024-10-11T12:00:00Z",
+        "additional_notes": "Contains nuts."
+        
+    },
+    {
+        "_id":3,
+        "food_image": "https://example.com/images/sandwich.jpg",
+        "food_name": "Turkey Sandwiches",
+        "donator":[ {
+            "image": "https://example.com/images/donator6.jpg"},
+            {
+            "name": "Laura Garcia"
+        }],
+        "food_quantity": 15,
+        "pickup_location": "789 Pine Rd, Springfield",
+        "expired_datetime": "2024-10-13T10:30:00Z",
+        "additional_notes": "Contains gluten."
+        
+    },
+    { 
+        "_id":4,
+        "food_image": "https://example.com/images/pizza.jpg",
+        "food_name": "Cheese Pizza",
+       "donator":[ {
+            "image": "https://example.com/images/donator6.jpg"},
+            {
+            "name": "Laura Garcia"
+        }],
+        "food_quantity": 8,
+        "pickup_location": "321 Elm St, Springfield",
+        "expired_datetime": "2024-10-10T14:00:00Z",
+        "additional_notes": "Can be reheated."
+       
+    },
+    {
+        "_id":5,
+        "food_image": "https://example.com/images/soup.jpg",
+        "food_name": "Vegetable Soup",
+       "donator":[ {
+            "image": "https://example.com/images/donator6.jpg"},
+            {
+            "name": "Laura Garcia"
+        }],
+        "food_quantity": 20,
+        "pickup_location": "654 Cedar Blvd, Springfield",
+        "expired_datetime": "2024-10-14T11:00:00Z",
+        "additional_notes": "Gluten-free."
+       
+    },
+    {
+        "_id":6,
+        "food_image": "https://example.com/images/cake.jpg",
+        "food_name": "Chocolate Cake",
+        "donator":[ {
+            "image": "https://example.com/images/donator6.jpg"},
+            {
+            "name": "Laura Garcia"
+        }],
+        "food_quantity": 12,
+        "pickup_location": "987 Birch Dr, Springfield",
+        "expired_datetime": "2024-10-15T16:00:00Z",
+        "additional_notes": "Contains dairy and eggs."
+        
+    }
+]
