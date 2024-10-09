@@ -1,12 +1,8 @@
-
 import { Link } from "react-router-dom";
 import useAuth from "../../Hook/useAuth";
 
-
-
-
 const Register = () => {
-     const {createSignUp}=useAuth()
+     const {createSignUp,updateUserProfile,setUser}=useAuth()
 
     const handleRegisterButton=async(e)=>{
         e.preventDefault()
@@ -19,6 +15,8 @@ const Register = () => {
   try{
       const result=await createSignUp(email,password)
       console.log(result)
+      const update=await updateUserProfile(name,photoURL)
+      setUser(update)
   }
   catch(err){
     console.log(err.message)
@@ -49,7 +47,7 @@ const Register = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Password</span>
+                  <span className="label-text">photoURL</span>
                 </label>
                 <input type="url" name="photoURL" placeholder="your photoURL" className="input input-bordered" />
               </div>

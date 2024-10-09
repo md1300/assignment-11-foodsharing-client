@@ -1,7 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "../Hook/useAuth";
 
 
 const Navber = () => {
+  const {user,logOut}=useAuth()
+
 
 const navLink=<div className="lg:flex gap-6 font-sans font-medium">
 
@@ -49,7 +52,20 @@ const navLink=<div className="lg:flex gap-6 font-sans font-medium">
           </ul>
         </div>
         <div className="navbar-end">
-          <Link to='/login' className="btn">Sign In</Link>
+        {user?.email? <>       
+          <div className="dropdown dropdown-end">
+      <div tabIndex={0} role="button" data-tip={user.displayName}  className="btn btn-ghost btn-circle avatar tooltip tooltip-left">
+        <div className=" rounded-full">
+         <img src={user?.photoURL} alt="No photo" />
+        </div>
+      </div>
+      <ul
+        tabIndex={0}
+        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+        <li><button onClick={()=>logOut()}>Logout</button></li>
+      </ul>
+    </div>
+        </>:<Link to='/login' className="btn">Sign In</Link>}
         </div>
       </div>
       
