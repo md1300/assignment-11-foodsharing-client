@@ -7,6 +7,8 @@ import Register from "../pages/authentication/Register";
 import NotFound from "../Components/NotFound";
 import AddFood from "../pages/AddFood/AddFood";
 import AvailableFoods from "../pages/AvailableFoods/AvailableFoods";
+import FoodDetails from "../pages/FoodDetails/FoodDetails";
+import axios from "axios";
 
 
 
@@ -35,6 +37,11 @@ const router = createBrowserRouter([
                     {
                         path:'available-foods',
                         element:<AvailableFoods/>
+                    },
+                    {
+                        path:'/foodDetails/:id',
+                        loader:({params})=>fetch(`${import.meta.env.VITE_ACCESS_URL}/details/${params.id}`),
+                        element:<FoodDetails/>
                     }
                 ]
             }
