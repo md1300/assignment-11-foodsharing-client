@@ -9,7 +9,7 @@ const Navber = () => {
 const navLink=<div className="lg:flex gap-6 font-sans font-medium">
 
 <NavLink to='/' className={({isActive})=>isActive?'btn btn-ghost text-red-400':'btn btn-ghost'}>home</NavLink>
-<NavLink to='/available-food' className={({isActive})=>isActive?'btn btn-ghost text-red-400':'btn btn-ghost'}>Available Foods</NavLink>
+<NavLink to='available-foods' className={({isActive})=>isActive?'btn btn-ghost text-red-400':'btn btn-ghost'}>Available Foods</NavLink>
 <NavLink to='/added-food' className={({isActive})=>isActive?'btn btn-ghost text-red-400':'btn btn-ghost'}>Add Food</NavLink>
 <NavLink to='/manage-food' className={({isActive})=>isActive?'btn btn-ghost text-red-400':'btn btn-ghost'}>Manage Foods</NavLink>
 <NavLink to='/foods-request' className={({isActive})=>isActive?'btn btn-ghost text-red-400':'btn btn-ghost'}>Foods requests</NavLink>

@@ -1,13 +1,25 @@
-import { useState } from "react";
+
+import { useEffect, useState } from "react";
 import FoodCard from "./FoodCard";
+import axios from "axios";
 
 
-const FoodFeatures = () => {
+const FoodFeatures=()=>{
     const [foods,setFoods]=useState([])
 
-    fetch("/src/FakeData/Fake.json")
-    .then(res=>res.json())
-    .then(data=>setFoods(data))
+    useEffect(()=>{
+        const getData=async()=>{
+          
+             const {data} = await axios(`${import.meta.env.VITE_ACCESS_URL}/added-food`)
+            setFoods(data)
+         
+        }
+        getData()
+    },[])
+
+    
+
+    
     return (
         <div className="my-11">
             <div className="flex flex-col gap-3 items-center text-center mb-11">
