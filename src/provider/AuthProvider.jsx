@@ -10,28 +10,33 @@ const provider=new GoogleAuthProvider()
 
 
 const AuthProvider = ({children}) => {
-
+     const [loading,setLoading]=useState(true)
     const [user,setUser]=useState(null)
 
     // create sign up in password----------------
  const createSignUp=async(email,password)=>{
+    setLoading(true)
     return await createUserWithEmailAndPassword(auth,email,password)
  }
 //  sign in with email ane password -------------
  const signIn=async(email,password)=>{
+    setLoading(true)
     return await signInWithEmailAndPassword(auth,email,password)
  }
 //  ----google sign in -----------------
 const googleSignIn=async()=>{
+    setLoading(true)
   return signInWithPopup(auth, provider)
 
 }
 // work about log out button _____-----------------
 const logOut=async()=>{
+    setLoading(true)
     return await signOut(auth)
 }
 // -----------------update user name and photo --------
 const updateUserProfile=async(name,photoURL)=>{
+    setLoading(true)
       return await updateProfile(auth.currentUser,{
         displayName:name,
         photoURL:photoURL
@@ -41,6 +46,7 @@ const updateUserProfile=async(name,photoURL)=>{
 useEffect(()=>{
     const unSubscribe=onAuthStateChanged(auth,currentUser=>{
         setUser(currentUser)
+        setLoading(false)
         console.log("current user ------------>",currentUser)
     })
     return ()=>{
@@ -55,7 +61,8 @@ useEffect(()=>{
         signIn,
         googleSignIn,
         logOut,
-        updateUserProfile
+        updateUserProfile,
+        loading
     }
 
     return (

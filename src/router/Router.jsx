@@ -8,7 +8,10 @@ import NotFound from "../Components/NotFound";
 import AddFood from "../pages/AddFood/AddFood";
 import AvailableFoods from "../pages/AvailableFoods/AvailableFoods";
 import FoodDetails from "../pages/FoodDetails/FoodDetails";
-import axios from "axios";
+import ManageFoods from "../pages/ManageFoods/ManageFoods";
+import PrivateRouter from "./PrivateRouter";
+import FoodRequest from "../pages/FoodRequest/FoodRequest";
+
 
 
 
@@ -32,7 +35,7 @@ const router = createBrowserRouter([
                     },
                     {
                         path:'added-food',
-                        element:<AddFood/>
+                        element:<PrivateRouter><AddFood/></PrivateRouter>
                     },
                     {
                         path:'available-foods',
@@ -42,6 +45,14 @@ const router = createBrowserRouter([
                         path:'/foodDetails/:id',
                         loader:({params})=>fetch(`${import.meta.env.VITE_ACCESS_URL}/details/${params.id}`),
                         element:<FoodDetails/>
+                    },
+                    {
+                        path:'/manage-food',
+                        element:<PrivateRouter><ManageFoods/></PrivateRouter>
+                    },
+                    {
+                        path:'/foods-request',
+                        element:<PrivateRouter><FoodRequest/></PrivateRouter>
                     }
                 ]
             }

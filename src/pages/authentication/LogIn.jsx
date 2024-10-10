@@ -1,14 +1,28 @@
-import { Link } from "react-router-dom";
+import { Link, replace, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hook/useAuth";
+import { useEffect } from "react";
 
 
 const LogIn = () => {
- const {signIn,googleSignIn}=useAuth()
+ const {signIn,googleSignIn,user,loading}=useAuth()
+ const location=useLocation()
+ const navigate=useNavigate()
+
+ const form=location.state || '/'
+
+ useEffect(()=>{
+  if(user){
+    return navigate('/')
+  } 
+ },[user,navigate])
+
 //  handle google sign in button ---------------
 const signInGoogle=async()=>{
   try{
     const result = await googleSignIn()
   console.log(result)
+   navigate(form, {replace:true})
+
   }
   catch(err){
     console.log(err.message)
@@ -24,11 +38,16 @@ const signInGoogle=async()=>{
         try{
           const result=await signIn(email,password)
           console.log(result)
+          navigate(form, {replace:true})
         }
         catch(err){
           console.log(err.message)
+          form.reset()
         }
     }
+
+if(user || loading) return
+
     return (
         <div className="hero bg-base-200 min-h-screen">
         <div className="hero-content flex-col">

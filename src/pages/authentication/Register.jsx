@@ -1,8 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hook/useAuth";
 
 const Register = () => {
-     const {createSignUp,updateUserProfile,setUser}=useAuth()
+     const {createSignUp,updateUserProfile,setUser,}=useAuth()
+     const navigate=useNavigate()
+     const location=useLocation()
+
+     const from=location.state || '/' ;
 
     const handleRegisterButton=async(e)=>{
         e.preventDefault()
@@ -17,9 +21,11 @@ const Register = () => {
       console.log(result)
       const update=await updateUserProfile(name,photoURL)
       setUser(update)
+      navigate(from,{replace:true})
   }
   catch(err){
     console.log(err.message)
+    
   }
     
     }
