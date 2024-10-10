@@ -3,7 +3,7 @@ import DatePicker from "react-datepicker";
 import axios from 'axios'
 import "react-datepicker/dist/react-datepicker.css";
 const AddFood = () => {
-    const [startDate, setStartDate] = useState(new Date());
+    const [startDate, setStartDate] = useState(new Date().toLocaleDateString('en-US'));
     const handleAddedFoodButton=async(e)=>{
         e.preventDefault()
         const form=e.target;
