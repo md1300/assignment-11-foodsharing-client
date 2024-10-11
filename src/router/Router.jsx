@@ -11,6 +11,7 @@ import FoodDetails from "../pages/FoodDetails/FoodDetails";
 import ManageFoods from "../pages/ManageFoods/ManageFoods";
 import PrivateRouter from "./PrivateRouter";
 import FoodRequest from "../pages/FoodRequest/FoodRequest";
+import EditFoodsInfo from "../pages/EditFoodsInfo/EditFoodsInfo";
 
 
 
@@ -53,6 +54,11 @@ const router = createBrowserRouter([
                     {
                         path:'/foods-request',
                         element:<PrivateRouter><FoodRequest/></PrivateRouter>
+                    },
+                    {
+                        path:'/edit-info/:id',
+                        loader:({params})=>fetch(`${import.meta.env.VITE_ACCESS_URL}/edit-info/${params.id}`),
+                        element:<EditFoodsInfo/>
                     }
                 ]
             }
