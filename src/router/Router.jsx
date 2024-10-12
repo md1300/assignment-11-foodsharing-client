@@ -35,11 +35,11 @@ const router = createBrowserRouter([
                         element:<Register/>
                     },
                     {
-                        path:'added-food',
+                        path:'/added-food',
                         element:<PrivateRouter><AddFood/></PrivateRouter>
                     },
                     {
-                        path:'available-foods',
+                        path:'/available-foods',
                         element:<AvailableFoods/>
                     },
                     {
