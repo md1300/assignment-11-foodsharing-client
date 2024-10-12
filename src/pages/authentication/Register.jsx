@@ -1,6 +1,7 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hook/useAuth";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const Register = () => {
      const {createSignUp,updateUserProfile,setUser,}=useAuth()
@@ -25,6 +26,8 @@ const Register = () => {
       if(result){
         Swal.fire('successfully registered')
       }
+      const {data}=await axios.post(`${import.meta.env.VITE_ACCESS_URL}/jwt`,{email:result?.user?.email},{withCredentials:true})
+   console.log(data)
   }
   catch(err){
     Swal.fire(err.message)

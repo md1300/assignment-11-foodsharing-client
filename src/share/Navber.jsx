@@ -1,9 +1,21 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../Hook/useAuth";
+import axios from "axios";
 
 
 const Navber = () => {
   const {user,logOut}=useAuth()
+
+  const handleLogOutButton=async()=>{
+   try{
+         logOut()
+         const {data}=await axios(`${import.meta.env.VITE_ACCESS_URL}/logOut`,{withCredentials:true})
+         console.log(data)
+   }
+   catch(err){
+    console.log(err.message)
+   }
+  }
 
 
 const navLink=<div className="lg:flex gap-6 font-sans font-medium">
@@ -63,7 +75,7 @@ const navLink=<div className="lg:flex gap-6 font-sans font-medium">
         tabIndex={0}
         
         className="menu menu-sm dropdown-content bg-slate-200 rounded-box z-50 mt-3 w-52 p-2 shadow">
-        <li><button onClick={()=>logOut()}>Logout</button></li>
+        <li><button onClick={handleLogOutButton}>Logout</button></li>
       </ul>
     </div>
         </>:<Link to='/login' className="btn">Sign In</Link>}

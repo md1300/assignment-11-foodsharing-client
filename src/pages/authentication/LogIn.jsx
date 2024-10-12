@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hook/useAuth";
 import { useEffect } from "react";
 import Swal from "sweetalert2";
+import axios from "axios"
 
 
 const LogIn = () => {
@@ -11,7 +12,7 @@ const LogIn = () => {
  
 
 
- const form=location.state || '/'
+ const form=location?.state || '/'
 
  useEffect(()=>{
   if(user){
@@ -23,12 +24,10 @@ const LogIn = () => {
 const signInGoogle=async()=>{
   try{
     const result = await googleSignIn()
-  if(result){
-    Swal.fire('successfully Log in')
-  }
+    console.log(result)
+    const {data}=await axios.post(`${import.meta.env.VITE_ACCESS_URL}/jwt`,{email:result?.user?.email},{withCredentials:true})
+   console.log(data)
    navigate(form, {replace:true})
-   
-
   }
   catch(err){
     Swal.fire(err.message)
@@ -43,6 +42,10 @@ const signInGoogle=async()=>{
         console.log({email,password})
         try{
           const result=await signIn(email,password)
+
+   const {data}=await axios.post(`${import.meta.env.VITE_ACCESS_URL}/jwt`,{email:result?.user?.email},{withCredentials:true})
+   console.log(data)
+
           if(result){
             Swal.fire('successfully Log in')
           }
