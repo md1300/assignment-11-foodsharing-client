@@ -1,9 +1,12 @@
 import  { useState } from "react";
 import DatePicker from "react-datepicker";
 import axios from 'axios'
+import Swal from 'sweetalert2'
 import "react-datepicker/dist/react-datepicker.css";
+import useAuth from "../../Hook/useAuth";
 const AddFood = () => {
-    const [startDate, setStartDate] = useState(new Date().toLocaleDateString('en-US'));
+    const {user}=useAuth()
+    const [startDate, setStartDate] = useState(new Date().toLocaleDateString());
     const handleAddedFoodButton=async(e)=>{
         e.preventDefault()
         const form=e.target;
@@ -20,14 +23,19 @@ const AddFood = () => {
         
         const foodsData={food_name,food_image,food_quantity,pickup_location,expire_data,additional_notes,donator_name,donator_image,donator_email,food_status}
 
-        console.log(foodsData)
+        // console.log(foodsData)
 
        try{
         const {data}=await axios.post(`${import.meta.env.VITE_ACCESS_URL}/added-food`,foodsData)
-       console.log(data)
+       if(data.acknowledged){
+        Swal.fire("successfully added your foods");
+        form.reset()
+       }
        }
        catch(err){
-        console.log(err.message)
+        if(err){
+            Swal.fire(err.message)
+        }
        }
 
     }
@@ -76,7 +84,7 @@ const AddFood = () => {
             </div>
             <div>
                 <label className="text-gray-700 dark:text-gray-200" >Donator email</label>
-                <input id="passwordConfirmation" name="donatorEmail" type="email" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
+                <input id="passwordConfirmation" defaultValue={user?.email} name="donatorEmail" type="email" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
             </div>
             <div>
                 <label className="text-gray-700 dark:text-gray-200" >Food Status</label>

@@ -1,5 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hook/useAuth";
+import Swal from "sweetalert2";
 
 const Register = () => {
      const {createSignUp,updateUserProfile,setUser,}=useAuth()
@@ -18,13 +19,15 @@ const Register = () => {
         console.log({name,email,password,photoURL})
   try{
       const result=await createSignUp(email,password)
-      console.log(result)
       const update=await updateUserProfile(name,photoURL)
       setUser(update)
       navigate(from,{replace:true})
+      if(result){
+        Swal.fire('successfully registered')
+      }
   }
   catch(err){
-    console.log(err.message)
+    Swal.fire(err.message)
     
   }
     

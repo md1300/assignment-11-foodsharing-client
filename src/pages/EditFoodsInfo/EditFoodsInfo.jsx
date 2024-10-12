@@ -1,15 +1,17 @@
 import { useState } from "react";
 import DatePicker from "react-datepicker";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 
 const EditFoodsInfo = () => {
     const foodsInfo=useLoaderData()
  const {donator_name,pickup_location,food_image,food_name,food_quantity,expire_data,additional_notes,_id, donator_image,donator_email,food_status}=foodsInfo;
+ const navigate=useNavigate()
 
-    const [startDate, setStartDate] = useState(new Date().toLocaleDateString('en-US'));
+    const [startDate, setStartDate] = useState(new Date().toLocaleDateString());
     
     const handleEditButton=async(e)=>{
          e.preventDefault()
@@ -31,7 +33,10 @@ const EditFoodsInfo = () => {
 
          try{
               const {data}=await axios.patch(`${import.meta.env.VITE_ACCESS_URL}/edit-info/${_id}`,editedfoodsData)
-              console.log(data)
+              if(data.acknowledged){
+                Swal.fire('your edit is successfull')
+                navigate('/')
+              }
          }
          catch(err){
               console.log(err.message)

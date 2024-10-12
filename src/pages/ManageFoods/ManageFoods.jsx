@@ -2,8 +2,7 @@ import {  useEffect, useState } from "react";
 import useAuth from "../../Hook/useAuth";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
-
+import Swal from "sweetalert2";
 
 
 const ManageFoods = () => {
@@ -24,6 +23,7 @@ const ManageFoods = () => {
          const {data}=await axios.delete(`${import.meta.env.VITE_ACCESS_URL}/delete/${id}`)
          getData()
          console.log(data)
+        Swal.fire('Delete completed')
    }
     
     return (

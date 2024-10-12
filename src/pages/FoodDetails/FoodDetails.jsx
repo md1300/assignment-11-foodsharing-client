@@ -2,6 +2,7 @@ import {  useLoaderData, useNavigate } from "react-router-dom";
 import useAuth from "../../Hook/useAuth";
 import DatePicker from "react-datepicker";
 import axios from "axios";
+import Swal from 'sweetalert2'
 
 const FoodDetails = () => {
     const {user}=useAuth()
@@ -19,9 +20,11 @@ const handleRequsestButton=async(id)=>{
     console.log(requestedData)
     try{
          const {data}=await axios.post(`${import.meta.env.VITE_ACCESS_URL}/requset`,requestedData)
-         console.log(data)
          const {data2}=await axios.delete(`${import.meta.env.VITE_ACCESS_URL}/delete/${id}`)
          console.log(data2)
+         if(data.acknowledged){
+              Swal.fire('your request successfull')
+         }
        return navigate('/')
     }
     catch(err){

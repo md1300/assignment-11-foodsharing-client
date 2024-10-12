@@ -1,12 +1,15 @@
-import { Link, replace, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hook/useAuth";
 import { useEffect } from "react";
+import Swal from "sweetalert2";
 
 
 const LogIn = () => {
  const {signIn,googleSignIn,user,loading}=useAuth()
  const location=useLocation()
  const navigate=useNavigate()
+ 
+
 
  const form=location.state || '/'
 
@@ -20,12 +23,15 @@ const LogIn = () => {
 const signInGoogle=async()=>{
   try{
     const result = await googleSignIn()
-  console.log(result)
+  if(result){
+    Swal.fire('successfully Log in')
+  }
    navigate(form, {replace:true})
+   
 
   }
   catch(err){
-    console.log(err.message)
+    Swal.fire(err.message)
   }
 }
 //  handle sign in button ----------------
@@ -37,11 +43,13 @@ const signInGoogle=async()=>{
         console.log({email,password})
         try{
           const result=await signIn(email,password)
-          console.log(result)
-          navigate(form, {replace:true})
+          if(result){
+            Swal.fire('successfully Log in')
+          }
+          navigate(form , {replace:true})
         }
         catch(err){
-          console.log(err.message)
+          Swal.fire(err.message)
           form.reset()
         }
     }
