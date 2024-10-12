@@ -7,7 +7,7 @@ const FoodRequest = () => {
     const [foodsRequests,setFoodsRequests]=useState([])
     const {user}=useAuth()
     const getFoodsRequest=async()=>{
-        const {data}=await axios(`${import.meta.env.VITE_ACCESS_URL}/my-request/${user.email}`)
+        const {data}=await axios(`${import.meta.env.VITE_ACCESS_URL}/my-request/${user.email}`,{withCredentials:true})
         setFoodsRequests(data)
     }
     useEffect(()=>{

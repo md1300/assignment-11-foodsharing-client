@@ -9,29 +9,51 @@ const FoodDetails = () => {
    const loadedData=useLoaderData()
    const navigate=useNavigate()
    
-   const {donator_name,pickup_location,food_image,food_name,food_quantity,expire_data,_id,}=loadedData;
+   const {donator_name,pickup_location,food_image,food_name,food_quantity,expire_data,_id,donator_email}=loadedData;
 const handleRequsestButton=async(id)=>{
     console.log(id)
     const food_id=_id;
     const user_email=user?.email;
     const request_Date=new Date().toLocaleDateString('en-US')
     const status='requested'
-    const requestedData={donator_name,pickup_location,food_image,food_name,food_quantity,expire_data,food_id,user_email,request_Date,status}
+    const requestedData={donator_name,pickup_location,food_image,food_name,food_quantity,expire_data,food_id,user_email,request_Date,status,donator_email}
     console.log(requestedData)
-    try{
-         const {data}=await axios.post(`${import.meta.env.VITE_ACCESS_URL}/requset`,requestedData)
-         const {data2}=await axios.delete(`${import.meta.env.VITE_ACCESS_URL}/delete/${id}`)
-         console.log(data2)
-         if(data.acknowledged){
-              Swal.fire('your request successfull')
-         }
-       return navigate('/')
-    }
-    catch(err){
-        console.log(err.message)
+    // try{
+    //      const {data}=await axios.post(`${import.meta.env.VITE_ACCESS_URL}/requset`,requestedData)
+    //      const {data2}=await axios.delete(`${import.meta.env.VITE_ACCESS_URL}/delete/${id}`)
+    //      console.log(data2)
+    //      if(data.acknowledged){
+    //           Swal.fire('your request successfull')
+    //      }
+    //    return navigate('/')
+    // }
+    // catch(err){
+    //     console.log(err.message)
+    // }
+
+    if(donator_email!==user?.email){
+        try{
+            const {data}=await axios.post(`${import.meta.env.VITE_ACCESS_URL}/requset`,requestedData)
+            const {data2}=await axios.delete(`${import.meta.env.VITE_ACCESS_URL}/delete/${id}`)
+            console.log(data2)
+            if(data.acknowledged){
+                 Swal.fire('your request successfull')
+            }
+          return navigate('/')
+       }
+       catch(err){
+           console.log(err.message)
+       }
+
     }
 
-}
+    return (
+        Swal.fire('you do not request food because your email is same in donar email') && navigate('/')
+        
+    )
+    
+    
+    }
 
     return (
         <div className="flex flex-col items-center">
