@@ -10,7 +10,6 @@ const Home = () => {
   
     return (
         <div>
-          <h1>this is home page </h1>
           <Carosul/>
           <FoodFeatures/>
           <Achivement/>

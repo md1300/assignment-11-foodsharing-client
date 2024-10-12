@@ -85,12 +85,7 @@ console.log(search)
          
 
       <div className='flex justify-center mt-12'>
-        {/*  ----------previous button ---------------- */}
-       
-        {/* ------------numeric button ------------  */}
-       
-        {/* --------------next button -------------------------------- */}
-    
+        
       </div>
     </div>
     </div>

@@ -35,9 +35,9 @@ const Carosul = () => {
           modules={[Autoplay,Pagination, Navigation]}
           className="mySwiper"
         >
-          <SwiperSlide><Slide image={bgImg1} text='get your web development project done in minutes'/></SwiperSlide>
-          <SwiperSlide><Slide image={bgImg2} text='get your graphics design project done in minutes' /></SwiperSlide>
-          <SwiperSlide><Slide image={bgImg3} text='get your digital marketing campaings up a running' /></SwiperSlide>
+          <SwiperSlide><Slide image={bgImg1} text='Feeding the hungry is a responsibility we all share. Together, we can make a difference.'/></SwiperSlide>
+          <SwiperSlide><Slide image={bgImg2} text='Hunger knows no borders, and neither should our compassion' /></SwiperSlide>
+          <SwiperSlide><Slide image={bgImg3} text='Every meal shared brings us one step closer to ending hunger.' /></SwiperSlide>
           
          
         

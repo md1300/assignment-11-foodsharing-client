@@ -41,7 +41,7 @@ const AddFood = () => {
     }
     return (
         <section className="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
-    <h2 className="text-lg font-semibold text-gray-700 capitalize dark:text-white">Account settings</h2>
+    <h2 className="text-lg font-semibold text-gray-700 capitalize dark:text-white">Added Food</h2>
 
     <form onSubmit={handleAddedFoodButton}>
         <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
