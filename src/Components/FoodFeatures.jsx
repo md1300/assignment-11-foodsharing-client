@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import FoodCard from "./FoodCard";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 
 const FoodFeatures=()=>{
@@ -33,6 +34,9 @@ const FoodFeatures=()=>{
             key={id} 
             food={food}></FoodCard>)
        }
+       </div>
+       <div className="my-8 text-center">
+        <Link to='/available-foods' className="btn btn-ghost p-4 ">See All Foods </Link>
        </div>
 
         </div>

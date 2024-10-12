@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import {  useLoaderData, useNavigate } from "react-router-dom";
 import useAuth from "../../Hook/useAuth";
 import DatePicker from "react-datepicker";
 import axios from "axios";
@@ -6,9 +6,11 @@ import axios from "axios";
 const FoodDetails = () => {
     const {user}=useAuth()
    const loadedData=useLoaderData()
+   const navigate=useNavigate()
    
    const {donator_name,pickup_location,food_image,food_name,food_quantity,expire_data,_id,}=loadedData;
-const handleRequsestButton=async()=>{
+const handleRequsestButton=async(id)=>{
+    console.log(id)
     const food_id=_id;
     const user_email=user?.email;
     const request_Date=new Date().toLocaleDateString('en-US')
@@ -18,6 +20,9 @@ const handleRequsestButton=async()=>{
     try{
          const {data}=await axios.post(`${import.meta.env.VITE_ACCESS_URL}/requset`,requestedData)
          console.log(data)
+         const {data2}=await axios.delete(`${import.meta.env.VITE_ACCESS_URL}/delete/${id}`)
+         console.log(data2)
+       return navigate('/')
     }
     catch(err){
         console.log(err.message)
@@ -49,7 +54,7 @@ const handleRequsestButton=async()=>{
         <DatePicker />
     </div>
     <div>
-        <button onClick={handleRequsestButton} className="btn btn-block font-semibold">request</button>
+        <button onClick={()=>handleRequsestButton(_id)} className="btn btn-block font-semibold">request</button>
     </div>
   </div>
 </div>

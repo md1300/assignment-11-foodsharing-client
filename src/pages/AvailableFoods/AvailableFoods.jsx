@@ -4,10 +4,10 @@ import AvailableFoodsCard from "../../Components/AvailableFoodsCard";
 
 
 const AvailableFoods = () => {
-  const [availableFoods,setAvailableFoods]=useState([])
+ const [availableFoods,setAvailableFoods]=useState([])
  const [searchText,setSearchText]=useState([])
  const [sort,setSort]=useState([])
-  const [search,setSearch]=useState([])
+ const [search,setSearch]=useState([])
 
 
   // -------------get all available foods data  ------------------
@@ -60,10 +60,10 @@ console.log(search)
           </div>
           <div>
             <select
-             
+              onChange={e=>setSort(e.target.value)}
               name='sort'
               id='sort'
-            
+              value={sort}
               className='border p-4 rounded-md'
             >
               <option value=''>Sort By Deadline</option>
